@@ -1,4 +1,4 @@
-const { poolPromise, sql } = require('../config/mssqldb.js');
+const { poolPromise, sql } = require('../../config/mssqldb.js');
 
 async function getAllGangPlanDetailGen(inwardVoyage) {
     try {

@@ -1,4 +1,4 @@
-const { getAllGangPlanDetailCar } = require('../model/gangPlanDetailCarModel.js');
+const { getAllGangPlanDetailCar } = require('../../model/updateRptModels/gangPlanDetailCarModel.js');
 
 async function fetchGangCar(req, res) {
     try {

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { PortContext } from './context/PortContext';
+import { PortContext } from '../../context/PortContext';
 import { IoMdDownload } from "react-icons/io";
 
 const GangDetailsGen = ({vesselName, inwardVoyage}) => {

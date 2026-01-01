@@ -1,4 +1,4 @@
-const { poolPromise, sql } = require('../config/mssqldb.js');
+const { poolPromise, sql } = require('../../config/mssqldb.js');
 
 async function getAllGangPlanDetail(inwardVoyage) {
     try {
@@ -102,7 +102,7 @@ async function getAllGangPlanDetail(inwardVoyage) {
                     gangNumber,
                     details: detailResult.recordset.map(r => ({
                         Crane: r.Crane,
-                        ListOfBays: r.ListOfBays,
+                        ListOfBays: r.ListOfBays?.trim(),
                         Discharge: r.Discharge,
                         Overstow: r.Overstow,
                         Restow: r.Restow,

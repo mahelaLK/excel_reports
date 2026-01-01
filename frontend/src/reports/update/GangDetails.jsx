@@ -1,30 +1,18 @@
 import React, { useContext } from 'react'
-import { PortContext } from './context/PortContext';
-//import * as XLSX from "xlsx";
-import XLSX from "xlsx-js-style";
+import { PortContext } from '../../context/PortContext';
 import { IoMdDownload } from "react-icons/io";
 
 const GangDetails = ({vesselName, inwardVoyage}) => {
 
-    const { gangDetails, exportTableStyled } = useContext(PortContext);
+    const { gangDetails, exportTableStyledCon } = useContext(PortContext);
 
     if (!gangDetails) {
         return <p>Loading....</p>
     }
 
-    {/* Table ----> XLSX */}
-    const exportTable = () => {
-      const table = document.getElementById("gangTable"); // 👈 reference your table
-      const worksheet = XLSX.utils.table_to_sheet(table); // convert table to sheet
-      const workbook = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(workbook, worksheet, "Gang Details");
-
-      XLSX.writeFile(workbook, `Voyage_${gangDetails.inwardVoyage}.xlsx`);
-    };
-
   return (
     <div className='flex flex-col mt-4'>
-      <button onClick={()=>exportTableStyled(vesselName)} className='bg-green-900 text-green-100 px-2 py-1 my-3 rounded-lg flex gap-2 justify-center items-center'>Export to Excel <IoMdDownload/></button>
+      <button onClick={()=>exportTableStyledCon(vesselName)} className='bg-green-900 text-green-100 px-2 py-1 my-3 rounded-lg flex gap-2 justify-center items-center'>Export to Excel <IoMdDownload/></button>
       {/* === Gang Summary Table === */}
       <table id='gangTable' border="1" cellPadding="5" className='w-full border-collapse bg-neutral-100'>
         <tbody>
@@ -123,9 +111,7 @@ const GangDetails = ({vesselName, inwardVoyage}) => {
             // keep global cumulative variance per gang
             const globalRunning = gangDetails.gangPlanDetails.map(() => 0);
 
-            return [...new Set(
-              gangDetails.gangPlanDetails.flatMap(g => g.shiftPlanDetails.map(s => s.ShiftNumber))
-            )].map(shiftNo => {
+            return [...new Set(gangDetails.gangPlanDetails.flatMap(g => g.shiftPlanDetails.map(s => s.ShiftNumber)))].map(shiftNo => {
               const firstShift = gangDetails.gangPlanDetails[0].shiftPlanDetails.find(s => s.ShiftNumber === shiftNo);
               const baselineLiftTimes = firstShift?.liftTimePlanDetails ?? [];
 

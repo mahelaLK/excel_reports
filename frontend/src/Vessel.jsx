@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { PortContext } from "./context/PortContext";
-import GangDetails from "./GangDetails";
 import Voyage from "./Voyage";
 
 const Vessel = () => {

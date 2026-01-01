@@ -1,9 +1,9 @@
-const { getAllGangPlanDetailGen } = require('../model/gangPlanDetailGenModel.js');
+const { getAllVprDetail } = require('../../model/vprRptModels/vprModel.js');
 
-async function fetchGangGen(req, res) {
+async function fetchVprDetail(req, res) {
     try {
         const inwardVoyage = req.params.inwardVoyage;
-        const details = await getAllGangPlanDetailGen(inwardVoyage);
+        const details = await getAllVprDetail(inwardVoyage);
         res.json({success: true, details});
     } catch (error) {
         console.log(error);
@@ -11,4 +11,4 @@ async function fetchGangGen(req, res) {
     }
 }
 
-module.exports = { fetchGangGen };
+module.exports = { fetchVprDetail }
