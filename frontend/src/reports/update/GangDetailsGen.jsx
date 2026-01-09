@@ -602,11 +602,7 @@ const GangDetailsGen = ({vesselName, inwardVoyage}) => {
                                     <>
                                       BP: {shift?.BayPlanner?.[0] ?? "-"}
                                       <br />
-                                      WM01: {shift?.Winchman?.[0] ?? "-"}
-                                      <br />
-                                      WM02: {shift?.Winchman2?.[0] ?? "-"}
-                                      <br />
-                                      WM03: {shift?.Winchman3?.[0] ?? "-"}
+                                      WM: {shift?.Winchman?.[0] ?? "-"}
                                       <br />
                                       RDT: {shift?.RDT?.[0] ?? "-"}
                                     </>

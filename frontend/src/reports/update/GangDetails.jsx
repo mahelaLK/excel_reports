@@ -219,9 +219,7 @@ const GangDetails = ({vesselName, inwardVoyage}) => {
                               <>
                                 FM: {shift?.Foreman ?? "-"}<br />
                                 BP: {shift?.BayPlanner ?? "-"}<br />
-                                WM01: {shift?.Winchman ?? "-"}<br />
-                                WM02: {shift?.Winchman2 ?? "-"}<br />
-                                WM03: {shift?.Winchman3 ?? "-"}<br />
+                                WM: {shift?.Winchman ?? "-"}<br />
                                 RDT: {shift?.Rdt ?? "-"}
                               </>
                             )}

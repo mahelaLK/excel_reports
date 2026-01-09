@@ -50,8 +50,6 @@ async function getAllGangPlanDetail(inwardVoyage) {
                     let foreman = null;
                     let bayplanner = null;
                     let winchman = null;
-                    let winchman2 = null;
-                    let winchman3 = null;
                     let rdt = null;
                     for (const liftTimeRow of shiftDetails.recordset){
                         const liftTimeDetails = await pool.request()
@@ -60,17 +58,15 @@ async function getAllGangPlanDetail(inwardVoyage) {
                         .input('gangNumber', gangNumber)
                         .input('liftTime', liftTimeRow.LiftTime)
                         .query(`
-                            SELECT Target, Actual, Remarks, Foreman, BayPlanner, Winchman, Winchman2, Winchman3, RDT
+                            SELECT Target, Actual, Remarks, Foreman, BayPlanner, Winchman, RDT
                             FROM VPS_ShiftPlanDetail
                             WHERE LiftTime=@liftTime AND ShiftHeaderID=@shiftHeaderId AND ShiftNo=@shiftNumber AND GangNo=@gangNumber
                             `);
 
-                        foreman = liftTimeDetails.recordset.flatMap(r=>r.Foreman);
-                        bayplanner = liftTimeDetails.recordset.flatMap(r=>r.BayPlanner);
-                        winchman = liftTimeDetails.recordset.flatMap(r=>r.Winchman);
-                        winchman2 = liftTimeDetails.recordset.flatMap(r=>r.Winchman2);
-                        winchman3 = liftTimeDetails.recordset.flatMap(r=>r.Winchman3);
-                        rdt = liftTimeDetails.recordset.flatMap(r=>r.RDT);
+                        foreman = liftTimeDetails.recordset.flatMap(r=>r.Foreman?.trim());
+                        bayplanner = liftTimeDetails.recordset.flatMap(r=>r.BayPlanner?.trim());
+                        winchman = liftTimeDetails.recordset.flatMap(r=>r.Winchman?.trim());
+                        rdt = liftTimeDetails.recordset.flatMap(r=>r.RDT?.trim());
                         liftTimePlanDetails.push({
                             LiftTime: liftTimeRow.LiftTime,
                             Details: liftTimeDetails.recordset.map(r=>({
@@ -88,8 +84,6 @@ async function getAllGangPlanDetail(inwardVoyage) {
                         Foreman: foreman,
                         BayPlanner: bayplanner,
                         Winchman: winchman,
-                        Winchman2: winchman2,
-                        Winchman3: winchman3,
                         Rdt: rdt,
                         LiftTimes: shiftDetails.recordset.map(r=>(r.LiftTime)),
                         liftTimePlanDetails

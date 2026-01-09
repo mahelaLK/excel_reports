@@ -827,12 +827,8 @@ export const exportTableStyledGen = async (vesselName, gangDetailsGen) => {
                 } else if (i === 1) {
                     staffInfo = `BP: ${shift?.BayPlanner ?? "-"}`;
                 } else if (i === 2) {
-                    staffInfo = `WM01: ${shift?.Winchman ?? "-"}`;
+                    staffInfo = `WM: ${shift?.Winchman ?? "-"}`;
                 } else if (i === 3) {
-                    staffInfo = `WM02: ${shift?.Winchman2 ?? "-"}`;
-                } else if (i === 4) {
-                    staffInfo = `WM03: ${shift?.Winchman3 ?? "-"}`;
-                } else if (i === 5) {
                     staffInfo = `RDT: ${shift?.RDT ?? "-"}`;
                 }
                 }
@@ -843,10 +839,10 @@ export const exportTableStyledGen = async (vesselName, gangDetailsGen) => {
                     font: { sz: 8 },
                     alignment: { horizontal: "left", vertical: "center" },
                     border: {
-                    top: { style: "thin", color: { rgb: "000000" } },
-                    bottom: { style: "thin", color: { rgb: "000000" } },
-                    left: { style: "thin", color: { rgb: "000000" } },
-                    right: { style: "thin", color: { rgb: "000000" } },
+                        top: { style: "thin", color: { rgb: "000000" } },
+                        bottom: { style: "thin", color: { rgb: "000000" } },
+                        left: { style: "thin", color: { rgb: "000000" } },
+                        right: { style: "thin", color: { rgb: "000000" } },
                     },
                 },
                 });

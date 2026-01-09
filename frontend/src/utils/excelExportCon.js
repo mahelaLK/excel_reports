@@ -738,12 +738,8 @@ export const exportTableStyledCon = async (vesselName, gangDetails) => {
             } else if (i === 1) {
                 staffInfo = `BP: ${shift?.BayPlanner ?? "-"}`;
             } else if (i === 2) {
-                staffInfo = `WM01: ${shift?.Winchman ?? "-"}`;
+                staffInfo = `WM: ${shift?.Winchman ?? "-"}`;
             } else if (i === 3) {
-                staffInfo = `WM02: ${shift?.Winchman2 ?? "-"}`;
-            } else if (i === 4) {
-                staffInfo = `WM03: ${shift?.Winchman3 ?? "-"}`;
-            } else if (i === 5) {
                 staffInfo = `RDT: ${shift?.Rdt ?? "-"}`;
             }
 
