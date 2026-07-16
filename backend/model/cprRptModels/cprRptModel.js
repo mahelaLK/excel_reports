@@ -60,14 +60,16 @@ async function getAllCprDetails(inwardVoyage) {
             const liftTimesResults = await pool.request()
                 .input('ShiftHeaderID', cranes[0].ShiftPlanHeaderID)
                 .input('ShiftNo', shiftNumber)
-                .query(`SELECT DISTINCT 
+                .query(`SELECT
                             LiftTime
                         FROM 
                             VPS_ShiftPlanDetail
                         WHERE 
                             ShiftHeaderID=@ShiftHeaderID
                         AND 
-                            ShiftNo=@ShiftNo`);
+                            ShiftNo=@ShiftNo
+                        GROUP BY LiftTime
+                        ORDER BY MIN(VPS_ShiftPlanDetail.ShiftPlanDetailID)`);
 
             if (liftTimesResults.recordset.length===0) {
                 throw new Error(`No lift times found for shift ${shiftNumber}`);

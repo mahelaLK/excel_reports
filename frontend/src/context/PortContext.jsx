@@ -10,6 +10,7 @@ import { grossWorkingTime } from "../utils/calculations/grossWorkingTime";
 import { exportVprStyled } from "../utils/excelExportVpr";
 import { exportVprCarStyled } from "../utils/excelExportVprCar";
 import { exportCprStyled } from "../utils/excelExportCpr";
+import { toast } from "react-toastify";
 
 export const PortContext = createContext();
 
@@ -29,10 +30,12 @@ const PortContextProvider = (props) => {
       if (response.data.success) {
         setVoyageNames(response.data.voyageNames.recordset);
       } else {
-        console.log(response.data.message);
+        setVoyageNames([])
+        toast.error(response.data.message);
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
+      toast.error(error.message);
     }
   };
 
@@ -43,9 +46,11 @@ const PortContextProvider = (props) => {
         setVesselNames(response.data.vesselNames.recordset);
       } else {
         console.log(response.data.message);
+        toast.error(response.data.message);
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
+      toast.error(error.message);
     }
   };
 
@@ -56,9 +61,11 @@ const PortContextProvider = (props) => {
         setCprDetails(response.data.details);
       } else {
         console.log(response.data.message);
+        toast.error(response.data.message);
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
+      toast.error(error.message);
     }
   }
 
@@ -69,9 +76,11 @@ const PortContextProvider = (props) => {
         setVprDetails(response.data.details);
       } else {
         console.log(response.data.message);
+        toast.error(response.data.message);
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
+      toast.error(error.message);
     }
   }
 
@@ -82,9 +91,11 @@ const PortContextProvider = (props) => {
         setGangDetails(response.data.details);
       } else {
         console.log(response.data.message);
+        toast.error(response.data.message);
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
+      toast.error(error.message);
     }
   };
 
@@ -92,12 +103,14 @@ const PortContextProvider = (props) => {
     try {
         const response = await axios.get(backendUrl + `/api/gangplandetailcars/${inwardVoyage}`);
         if (response.data.success) {
-            setGangDetailCars(response.data.details);
+          setGangDetailCars(response.data.details);
         } else {
-            console.log(response.data.message);
+          console.log(response.data.message);
+          toast.error(response.data.message);
         }
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
+        toast.error(error.message);
     }
   }
 
@@ -105,12 +118,14 @@ const PortContextProvider = (props) => {
     try {
         const response = await axios.get(backendUrl + `/api/gangplandetailgen/${inwardVoyage}`);
         if (response.data.success) {
-            setGangDetailsGen(response.data.details);
+          setGangDetailsGen(response.data.details);
         } else {
-            console.log(response.data.message);
+          console.log(response.data.message);
+          toast.error(response.data.message);
         }
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
+        toast.error(error.message);
     }
   }
 

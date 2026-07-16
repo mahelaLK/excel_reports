@@ -1,6 +1,65 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 
-*{
-  font-family: "Roboto", sans-serif;
+@theme {
+    /* Primary */
+  --color-primary: #0e6681;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #bbe9ff;
+  --color-on-primary-container: #004d63;
+
+  /* Secondary */
+  --color-secondary: #4c616b;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #cfe6f2;
+  --color-on-secondary-container: #354a53;
+
+  /* Tertiary */
+  --color-tertiary: #5c5b7d;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #e2dfff;
+  --color-on-tertiary-container: #444364;
+
+  /* Surface */
+  --color-surface: #f5fafd;
+  --color-on-surface: #171c1f;
+
+  --color-surface-variant: #E7E0EC;
+  --color-on-surface-variant: #40484c;
+
+  --color-surface-container-highest: #dee3e6;
+  --color-surface-container-high: #e4e9ec;
+  --color-surface-container: #eaeef2;
+  --color-surface-container-low: #f0f4f8;
+  --color-surface-container-lowest: #ffffff;
+
+  --color-inverse-surface: #322F35;
+  --color-inverse-on-surface: #F5EFF7;
+
+  --color-surface-tint: #6750A4;
+
+  /* Outline */
+  --color-outline: #70787d;
+  --color-outline-variant: #c0c8cc;
+
+  --font-outfit: 'Outfit', sans-serif;
+  --font-roboto: 'Roboto', sans-serif;
+}
+
+.active{
+    background-color: #6750a4;
+    color: #ffffff;
+    box-shadow: 0 4px 8px 0 #ECE6F0;
+}
+
+/* remove number input arrows */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
 }

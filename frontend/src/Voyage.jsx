@@ -27,7 +27,7 @@ const Voyage = ({vesselName, vesselType}) => {
       getGangDetails(selectedVoyage);
     } else if (vesselType==='Car Carrier' && selectedRptType==='UPDATE'){
       getGangDetailsCar(selectedVoyage);
-    } else if (vesselType==='General Cargo' && selectedRptType==='UPDATE'){
+    } else if (vesselType==='General Purpose Vessel' && selectedRptType==='UPDATE'){
       getGangDetailsGen(selectedVoyage);
     } else if (selectedRptType==='VPR'){
       getVprDetails(selectedVoyage);

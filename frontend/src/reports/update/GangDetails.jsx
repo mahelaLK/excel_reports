@@ -1,18 +1,18 @@
 import React, { useContext } from 'react'
 import { PortContext } from '../../context/PortContext';
-import { IoMdDownload } from "react-icons/io";
+import { RiFileExcel2Fill } from "react-icons/ri";
 
 const GangDetails = ({vesselName, inwardVoyage}) => {
 
     const { gangDetails, exportTableStyledCon } = useContext(PortContext);
 
     if (!gangDetails) {
-        return <p>Loading....</p>
+        return <p>Sorry, No gang details for selected voyage</p>
     }
 
   return (
     <div className='flex flex-col mt-4'>
-      <button onClick={()=>exportTableStyledCon(vesselName)} className='bg-green-900 text-green-100 px-2 py-1 my-3 rounded-lg flex gap-2 justify-center items-center'>Export to Excel <IoMdDownload/></button>
+      <button onClick={()=>exportTableStyledCon(vesselName)} className='bg-green-900 text-green-100 px-2 py-1 my-3 rounded-lg flex gap-2 justify-center items-center'>Export to Excel <RiFileExcel2Fill /></button>
       {/* === Gang Summary Table === */}
       <table id='gangTable' border="1" cellPadding="5" className='w-full border-collapse bg-neutral-100'>
         <tbody>
@@ -38,7 +38,7 @@ const GangDetails = ({vesselName, inwardVoyage}) => {
           <tr className='border-b-1 border-neutral-600'>
             <td className='px-2 bg-neutral-300'>Crane</td>
             {gangDetails.gangPlanDetails.map((plan) => (
-              <td key={plan.gangNumber} colSpan={3} className='border-x-1 border-neutral-400 px-2'>{plan.details.Crane}</td>
+              <td key={plan.gangNumber} colSpan={3} className='border-x-1 border-neutral-400 px-2'>{plan.details?.Crane? `${plan.details.Crane}` : 'No crane'}</td>
             ))}
           </tr>
 
@@ -46,7 +46,7 @@ const GangDetails = ({vesselName, inwardVoyage}) => {
           <tr className='border-b-1 border-neutral-600'>
             <td className='px-2 bg-neutral-300'>Bays</td>
             {gangDetails.gangPlanDetails.map((plan) => (
-              <td key={plan.gangNumber} colSpan={3} className='border-x-1 border-neutral-400 px-2'>{plan.details.ListOfBays}</td>
+              <td key={plan.gangNumber} colSpan={3} className='border-x-1 border-neutral-400 px-2'>{plan.details?.ListOfBays? `${plan.details.ListOfBays}` : 'No Bays'}</td>
             ))}
           </tr>
 
@@ -219,7 +219,11 @@ const GangDetails = ({vesselName, inwardVoyage}) => {
                               <>
                                 FM: {shift?.Foreman ?? "-"}<br />
                                 BP: {shift?.BayPlanner ?? "-"}<br />
-                                WM: {shift?.Winchman ?? "-"}<br />
+                                {shift?.Winchman?.length 
+                                  ? shift.Winchman.map((wm, i)=>(
+                                    <span key={i}>WM{i + 1}: {wm}<br /></span>
+                                  ))
+                                  : "WM: -"}
                                 RDT: {shift?.Rdt ?? "-"}
                               </>
                             )}

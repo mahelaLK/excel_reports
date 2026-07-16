@@ -1,7 +1,7 @@
 import React from 'react'
 import { useContext } from 'react'
 import { PortContext } from '../../context/PortContext'
-import { IoMdDownload } from 'react-icons/io';
+import { RiFileExcel2Fill } from "react-icons/ri";
 
 const CprDetails = ({vesselName, inwardVoyage}) => {
 
@@ -13,7 +13,7 @@ const CprDetails = ({vesselName, inwardVoyage}) => {
 
   return (
     <div className='flex flex-col mt-4'>
-        <button onClick={()=>exportCprStyled(vesselName, inwardVoyage, cprDetails)} className='bg-green-900 text-green-100 px-2 py-1 my-3 rounded-lg flex gap-2 justify-center items-center'>Export to Excel <IoMdDownload/></button>
+        <button onClick={()=>exportCprStyled(vesselName, inwardVoyage, cprDetails)} className='bg-green-900 text-green-100 px-2 py-1 my-3 rounded-lg flex gap-2 justify-center items-center'>Export to Excel <RiFileExcel2Fill /></button>
         
         {cprDetails.shiftNumbers.map(shiftNo=>{
             const shiftInfo = cprDetails.shiftDetails.find(s=>s.shiftNumber === shiftNo);

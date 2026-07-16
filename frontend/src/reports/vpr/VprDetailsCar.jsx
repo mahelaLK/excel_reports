@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { PortContext } from '../../context/PortContext';
-import { IoMdDownload } from "react-icons/io";
+import { RiFileExcel2Fill } from "react-icons/ri";
 import {assets} from '../../assets/assets.js'
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -30,7 +30,7 @@ const VprDetailsCar = ({vesselName, inwardVoyage}) => {
 
   return (
     <div className='flex flex-col mt-4'>
-        <button onClick={()=>exportVprCarStyled(vesselName, inwardVoyage, gwTime, bTime, vprDetails, maxRowTotalItem)} className='bg-green-900 text-green-100 px-2 py-1 my-3 rounded-lg flex gap-2 justify-center items-center'>Export to Excel <IoMdDownload/></button>
+        <button onClick={()=>exportVprCarStyled(vesselName, inwardVoyage, gwTime, bTime, vprDetails, maxRowTotalItem)} className='bg-green-900 text-green-100 px-2 py-1 my-3 rounded-lg flex gap-2 justify-center items-center'>Export to Excel <RiFileExcel2Fill /></button>
         <div className='flex w-full justify-between px-2 py-3 bg-neutral-200 border-b-1'>
             <img src={assets.FijiPortLogo} className='w-[25%]'/>
             <div className='flex flex-col w-[62.5%]'>
@@ -55,14 +55,14 @@ const VprDetailsCar = ({vesselName, inwardVoyage}) => {
                 <tr className='border-b-1 border-neutral-700 bg-neutral-100'>
                     <td className='pl-2 bg-neutral-200 w-[25%]'>Arrived</td>
                     <td className='text-center px-2 border-l-1 w-[12.5%]' colSpan={2}>{vprDetails.voyageInfo?.ArrivedDate?.split("T")[0]}</td>
-                    <td className='text-center px-2 border-l-1 w-[12.5%]' colSpan={2}>{vprDetails.voyageInfo?.ArrivedTime.split(":").slice(0,2).join(":") + 'hrs'}</td>
+                    <td className='text-center px-2 border-l-1 w-[12.5%]' colSpan={2}>{vprDetails.voyageInfo?.ArrivedTime?.split(":").slice(0,2).join(":") + 'hrs'}</td>
                     <td className='pl-2 border-l-1 bg-neutral-200 w-[25%]' colSpan={4}>Idle Time at Anchorage</td>
                     <td className='text-center pl-2 border-l-1 w-[25%]'>-</td>
                 </tr>
                 <tr className='border-b-1 border-neutral-700 bg-neutral-100'>
                     <td className='pl-2 bg-neutral-200 w-[25%]'>First Drop Anchor</td>
                     <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo?.FirstDropAnchorDate?.split("T")[0]}</td>
-                    <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo?.FirstDropAnchorTime.split(":").slice(0,2).join(":") + 'hrs'}</td>
+                    <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo?.FirstDropAnchorTime?.split(":").slice(0,2).join(":") + 'hrs'}</td>
                     <td className='pl-2 border-l-1 bg-neutral-200 w-[25%]' colSpan={4}>Time at Berth</td>
                     <td className='text-center pl-2 border-l-1 w-[25%]'>{bTime || '-'}</td>
                 </tr>
@@ -82,13 +82,13 @@ const VprDetailsCar = ({vesselName, inwardVoyage}) => {
                 <tr className='border-b-1 border-neutral-700 bg-neutral-100'>
                     <td className='pl-2 bg-neutral-200 w-[25%]'>OPS Commence</td>
                     <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo?.FirstOPSCommenceDate?.split("T")[0]}</td>
-                    <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo?.FirstOPSCommenceTime.split(":").slice(0,2).join(":") + 'hrs'}</td>
+                    <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo?.FirstOPSCommenceTime?.split(":").slice(0,2).join(":") + 'hrs'}</td>
                     <td className='border-l-1 w-[50%]' colSpan={5}></td>
                 </tr>
                 <tr className='border-b-1 border-neutral-700 bg-neutral-100'>
                     <td className='pl-2 bg-neutral-200 w-[25%]'>OPS Complete</td>
                     <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo?.FirstOPSCompleteDate?.split("T")[0]}</td>
-                    <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo?.FirstOPSCompleteTime.split(":").slice(0,2).join(":") + 'hrs'}</td>
+                    <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo?.FirstOPSCompleteTime?.split(":").slice(0,2).join(":") + 'hrs'}</td>
                     <td className='border-l-1 w-[50%]' colSpan={5}></td>
                 </tr>
                 {
@@ -96,7 +96,7 @@ const VprDetailsCar = ({vesselName, inwardVoyage}) => {
                     <tr className='border-b-1 border-neutral-700 bg-neutral-100'>
                         <td className='pl-2 bg-neutral-200'>First Berth Shift</td>
                         <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo.FirstBerthShiftDate?.split("T")[0]}</td>
-                        <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo?.FirstBerthShiftTime.split(":").slice(0,2).join(":") + 'hrs'}</td>
+                        <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo?.FirstBerthShiftTime?.split(":").slice(0,2).join(":") + 'hrs'}</td>
                         <td className='border-l-1' colSpan={5}></td>
                     </tr>
                 }
@@ -105,7 +105,7 @@ const VprDetailsCar = ({vesselName, inwardVoyage}) => {
                     <tr className='border-b-1 border-neutral-700 bg-neutral-100'>
                         <td className='pl-2 bg-neutral-200'>Second Drop Anchor</td>
                         <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo.SecondDropAnchorDate?.split("T")[0]}</td>
-                        <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo?.SecondDropAnchorTime.split(":").slice(0,2).join(":") + 'hrs'}</td>
+                        <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo?.SecondDropAnchorTime?.split(":").slice(0,2).join(":") + 'hrs'}</td>
                         <td className='border-l-1' colSpan={5}></td>
                     </tr>
                 }
@@ -114,7 +114,7 @@ const VprDetailsCar = ({vesselName, inwardVoyage}) => {
                     <tr className='border-b-1 border-neutral-700 bg-neutral-100'>
                         <td className='pl-2 bg-neutral-200'>Second Anchor Weigh</td>
                         <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo.SecondAnchorWeighDate?.split("T")[0]}</td>
-                        <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo?.SecondAnchorWeighTime.split(":").slice(0,2).join(":") + 'hrs'}</td>
+                        <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo?.SecondAnchorWeighTime?.split(":").slice(0,2).join(":") + 'hrs'}</td>
                         <td className='border-l-1' colSpan={5}></td>
                     </tr>
                 }
@@ -132,7 +132,7 @@ const VprDetailsCar = ({vesselName, inwardVoyage}) => {
                     <tr className='border-b-1 border-neutral-700 bg-neutral-100'>
                         <td className='pl-2 bg-neutral-200'>Second OPS Commence</td>
                         <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo.SecondOPSCommenceDate?.split("T")[0]}</td>
-                        <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo?.SecondOPSCommenceTime.split(":").slice(0,2).join(":") + 'hrs'}</td>
+                        <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo?.SecondOPSCommenceTime?.split(":").slice(0,2).join(":") + 'hrs'}</td>
                         <td className='border-l-1' colSpan={5}></td>
                     </tr>
                 }
@@ -141,7 +141,7 @@ const VprDetailsCar = ({vesselName, inwardVoyage}) => {
                     <tr className='border-b-1 border-neutral-700 bg-neutral-100'>
                         <td className='pl-2 bg-neutral-200'>Second OPS Complete</td>
                         <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo.SecondOPSCompleteDate?.split("T")[0]}</td>
-                        <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo?.SecondOPSCompleteTime.split(":").slice(0,2).join(":") + 'hrs'}</td>
+                        <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo?.SecondOPSCompleteTime?.split(":").slice(0,2).join(":") + 'hrs'}</td>
                         <td className='border-l-1' colSpan={5}></td>
                     </tr>
                 }
@@ -150,7 +150,7 @@ const VprDetailsCar = ({vesselName, inwardVoyage}) => {
                     <tr className='border-b-1 border-neutral-700 bg-neutral-100'>
                         <td className='pl-2 bg-neutral-200'>Second Berth Shift</td>
                         <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo.SecondBerthShiftDate?.split("T")[0]}</td>
-                        <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo?.SecondBerthShiftTime.split(":").slice(0,2).join(":") + 'hrs'}</td>
+                        <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo?.SecondBerthShiftTime?.split(":").slice(0,2).join(":") + 'hrs'}</td>
                         <td className='border-l-1' colSpan={5}></td>
                     </tr>
                 }
@@ -159,7 +159,7 @@ const VprDetailsCar = ({vesselName, inwardVoyage}) => {
                     <tr className='border-b-1 border-neutral-700 bg-neutral-100'>
                         <td className='pl-2 bg-neutral-200'>Third Drop Anchor</td>
                         <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo.ThirdDropAnchorDate?.split("T")[0]}</td>
-                        <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo?.ThirdDropAnchorTime.split(":").slice(0,2).join(":") + 'hrs'}</td>
+                        <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo?.ThirdDropAnchorTime?.split(":").slice(0,2).join(":") + 'hrs'}</td>
                         <td className='border-l-1' colSpan={5}></td>
                     </tr>
                 }
@@ -168,7 +168,7 @@ const VprDetailsCar = ({vesselName, inwardVoyage}) => {
                     <tr className='border-b-1 border-neutral-700 bg-neutral-100'>
                         <td className='pl-2 bg-neutral-200'>Third Anchor Weigh</td>
                         <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo.ThirdAnchorWeighDate?.split("T")[0]}</td>
-                        <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo?.ThirdAnchorWeighTime.split(":").slice(0,2).join(":") + 'hrs'}</td>
+                        <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo?.ThirdAnchorWeighTime?.split(":").slice(0,2).join(":") + 'hrs'}</td>
                         <td className='border-l-1' colSpan={5}></td>
                     </tr>
                 }
@@ -186,7 +186,7 @@ const VprDetailsCar = ({vesselName, inwardVoyage}) => {
                     <tr className='border-b-1 border-neutral-700 bg-neutral-100'>
                         <td className='pl-2 bg-neutral-200'>Third OPS Commence</td>
                         <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo.ThirdOPSCommenceDate?.split("T")[0]}</td>
-                        <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo?.ThirdOPSCommenceTime.split(":").slice(0,2).join(":") + 'hrs'}</td>
+                        <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo?.ThirdOPSCommenceTime?.split(":").slice(0,2).join(":") + 'hrs'}</td>
                         <td className='border-l-1' colSpan={5}></td>
                     </tr>
                 }
@@ -195,14 +195,14 @@ const VprDetailsCar = ({vesselName, inwardVoyage}) => {
                     <tr className='border-b-1 border-neutral-700 bg-neutral-100'>
                         <td className='pl-2 bg-neutral-200'>Third OPS Complete</td>
                         <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo.ThirdOPSCompleteDate?.split("T")[0]}</td>
-                        <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo?.ThirdOPSCompleteTime.split(":").slice(0,2).join(":") + 'hrs'}</td>
+                        <td className='text-center px-2 border-l-1' colSpan={2}>{vprDetails.voyageInfo?.ThirdOPSCompleteTime?.split(":").slice(0,2).join(":") + 'hrs'}</td>
                         <td className='border-l-1' colSpan={5}></td>
                     </tr>
                 }
                 <tr className='border-b-1 border-neutral-700 bg-neutral-200'>
                     <td className='pl-2'>Depature</td>
                     <td className='text-center px-2 border-l-1 bg-n' colSpan={2}>{vprDetails.voyageInfo?.DepatureDate?.split("T")[0]}</td>
-                    <td className='text-center px-2 border-l-1 bg-n' colSpan={2}>{vprDetails.voyageInfo?.DepatureTime.split(":").slice(0,2).join(":") + 'hrs'}</td>
+                    <td className='text-center px-2 border-l-1 bg-n' colSpan={2}>{vprDetails.voyageInfo?.DepatureTime?.split(":").slice(0,2).join(":") + 'hrs'}</td>
                     <td className='border-l-1' colSpan={5}></td>
                 </tr>
 
