@@ -1,0 +1,15 @@
+{
+  "name": "production",
+  "version": "1.0.0",
+  "description": "use to run frontend",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "server-static.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
